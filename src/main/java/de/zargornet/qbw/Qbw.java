@@ -7,7 +7,7 @@ import de.zargornet.qbw.databasequeries.IDatabaseQueries;
 import de.zargornet.qbw.databasequeries.MongoDBQueries;
 import de.zargornet.qbw.databasequeries.SQLQueries;
 import de.zargornet.qbw.game.arena.QbwArena;
-import de.zargornet.qbw.utils.MetricsLite;
+import de.zargornet.qbw.utils.Metrics;
 import de.zargornet.qbw.utils.files.Config;
 import de.zargornet.qbw.utils.files.MessagesFile;
 import de.zargornet.qbw.utils.packets.INMSUtil;
@@ -143,11 +143,8 @@ public class Qbw extends JavaPlugin {
      */
     private void loadMetrics() {
         if (this.getCfg().getConfiguration().getBoolean("metrics")) {
-            try {
-                new MetricsLite(this).start();
-                this.getLogger().info("Thanks for enabling metrics! :)");
-            } catch (IOException ignored) {
-            }
+            new Metrics(this);
+            this.getLogger().info("Thanks for enabling metrics! :)");
             return;
         }
         this.getLogger().info("You disabled metrics :c Please enable it again :)!");
