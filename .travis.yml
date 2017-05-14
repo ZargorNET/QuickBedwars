@@ -1,0 +1,22 @@
+language: java
+jdk:
+  - oraclejdk8
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+notifications:
+  email: false
+before_install: "cp ./settings.xml $HOME/.m2/settings.xml"
+deploy:
+  name: "Deployment Bot"
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: gh-pages
+env:
+  global:
+    - USERNAME=$USERNAME
+    - PASSWORD=$PASSWORD

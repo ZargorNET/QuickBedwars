@@ -1,0 +1,109 @@
+# (  ___  )(  ___ \ |\     /|
+# | (   ) || (   ) )| )   ( |
+# | |   | || (__/ / | | _ | |
+# | |   | ||  __ (  | |( )| |
+# | | /\| || (  \ \ | || || |
+# | (_\ \ || )___) )| () () |
+# (____\/_)|/ \___/ (_______)
+# Hey! Thanks for using QBW from Zargor!
+# This project is open source! Check the source here: <coming soon>
+# You fund a bug/error? Write an issue here: <coming soon>
+# You're self a developer and want to help me? Make a pull request on Github!: <coming soon>
+# License: GPL-3.0
+
+# This option defines if players who joins on a server will autojoin an arena
+# Useful in combination with BungeeCord
+autjoin:
+  # Enabled?
+  enabled: false
+  # Block non-qbw commands?
+  blockOtherCommands: true
+  # Arenaname which players should be joined
+  arena: "arena"
+  # Should the server stop if the game ends?
+  shutdownOnFinish: false
+  # May players leave the game?
+  leavable: false
+
+# Chat system
+chat:
+  # Should the chat system be enabled?
+  # WARNING: Could cause problems with other chat plugins
+  enabled: true
+  # Should there be a teamchat?
+  teamchat: true
+  # Should there be a globalchat?
+  globalchat: true
+  # If globalchat & teamchat are enabled, which symbol should there be, for the globalchat?
+  globalchatsymbol: '@'
+
+# Villager shops
+shops:
+  # Which name should the villagers have? Use for colorcodes '§' its the same as '&'
+  name: "§cShop"
+  # Should players be able to buy a new bed?
+  buyBed: true
+
+# This option defines the start time from a bed until it will be destroyed; in seconds
+# Example: defaultBedTime: 300
+# so the bed will be destroyed after 5 minutes if no time will be added
+defaultBedTime: 300
+
+# This option defines the amount of seconds which should be added to a bed if a player right clicks the bed with a clock
+# Example: clockTime: 30
+# so 30 seconds will be added
+clockTime: 30
+
+# This option defines the time in seconds until a item(bronze, silber, gold, clock) will be spawned at the spawners
+spawnerTime:
+  bronze: 2
+  silber: 10
+  gold: 20
+  clock: 30
+
+# This option defines the signs. Use '§' for color codes. Its the same like '&'
+# Custom variables(MUST BE ON THE SIGN!):
+# %ARENANAME% = Write here the arena name
+# %MODE% = Write here the join mode: (JOIN | LEAVE)
+sign:
+  arena:
+    firstLine: "§7[§eQBW§7]"
+    secondLine: "§c%ARENANAME%"
+    thirdLine: "§7%MODE%"
+
+
+# Configure the database
+database:
+  # Which database system should be used?
+  # Use 'sqlite' when you want to use a file => No external database required
+  # Use 'mysql' when you want to use MySQL
+  # Use 'mongodb' when you want to use MongoDB
+  type: sqlite
+  # If you use MongoDB
+  mongodb:
+    username: qbw
+    password: secretpassword
+    database: qbw
+    host: localhost
+    port: 27017
+    usesLogin: true
+  # If you use MySQL
+  mysql:
+    username: qbw
+    password: secretpassword
+    database: qbw
+    host: localhost
+    port: 3306
+  # SQLite doesn't need a configuration. YAY! :D
+
+# Locale file.
+# Add a new in 'locale' folder-
+# Example: messages_de.properties
+locale: en
+
+# Sends anonymously data to mcstats.org like an unique ID, player count
+# Please leave this enabled!
+metrics: true
+
+# Config version. DO NOT CHANGE THIS VALUE!
+version: 1
