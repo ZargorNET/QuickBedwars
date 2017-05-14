@@ -1,0 +1,8 @@
+name: QuickBedwars
+author: Zargor
+version: 1.0
+main: de.zargornet.qbw.Qbw
+commands:
+  quickbedwars:
+    description: Main command
+    aliases: [qbw]
