@@ -29,6 +29,8 @@ public class ListTeams implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         final String[] s = {""};
         world.getTeams().forEach(team -> s[0] += team.getColor().name() + " \n");
         if (s[0].equals("")) {

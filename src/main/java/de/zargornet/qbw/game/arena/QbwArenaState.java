@@ -6,6 +6,7 @@ package de.zargornet.qbw.game.arena;
 public enum QbwArenaState {
     LOBBY,
     MAPVOTING,
+    TEAMSELECT,
     RUNNING,
-    STOPPED;
+    STOPPED
 }

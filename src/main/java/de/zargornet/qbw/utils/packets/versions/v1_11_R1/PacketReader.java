@@ -6,6 +6,7 @@ import de.zargornet.qbw.utils.packets.IPacketReader;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
+import lombok.Getter;
 import net.minecraft.server.v1_11_R1.Packet;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -20,6 +21,7 @@ import java.util.Map;
  * @see de.zargornet.qbw.utils.packets.IPacketReader
  */
 public class PacketReader implements IPacketReader {
+    @Getter
     private final Map<Player, Channel> channels = new HashMap<>();
 
     @Override
@@ -56,9 +58,5 @@ public class PacketReader implements IPacketReader {
     @Override
     public void readPacket(Player p, Object packet) {
         Qbw.getInstance().getCustomEventHandler().fireEvent(new IncomingPacketEvent(p, packet));
-    }
-
-    private Map<Player, Channel> getChannels() {
-        return channels;
     }
 }

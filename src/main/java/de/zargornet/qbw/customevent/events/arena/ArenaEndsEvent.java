@@ -1,24 +1,22 @@
 package de.zargornet.qbw.customevent.events.arena;
 
 import de.zargornet.qbw.game.arena.QbwArena;
+import lombok.Getter;
 
 /**
  * Event will be called if an arena ends
  */
 public class ArenaEndsEvent extends ArenaCustomEvent {
-    private final ForceStop forceStop;
+    @Getter
+    private final EndReason endReason;
 
-    public ArenaEndsEvent(QbwArena arena, ForceStop forceStop) {
+    public ArenaEndsEvent(QbwArena arena, EndReason endReason) {
         super(arena);
-        this.forceStop = forceStop;
+        this.endReason = endReason;
     }
 
-    public ForceStop getForceStop() {
-        return forceStop;
-    }
-
-    public enum ForceStop {
-        NONE,
+    public enum EndReason {
+        WIN,
         ADMIN,
         TIME_OUT
     }

@@ -42,7 +42,7 @@ public class DisableArena implements IQbwCommand {
             });
         }
         arenaOptional.get().setState(QbwArenaState.STOPPED);
-        Qbw.getInstance().getCustomEventHandler().fireEvent(new ArenaEndsEvent(arenaOptional.get(), ArenaEndsEvent.ForceStop.ADMIN));
+        Qbw.getInstance().getCustomEventHandler().fireEvent(new ArenaEndsEvent(arenaOptional.get(), ArenaEndsEvent.EndReason.ADMIN));
         sender.sendMessage(Qbw.getInstance().getPrefix() + "§aSuccessfully force stopped arena §e" + args[0] + "§a! Don't forget it to enable it again with: §e/QBW startarena " + args[0]);
     }
 }

@@ -39,6 +39,8 @@ public class RemTeam implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         List<QbwTeam> teamList = world.getTeams();
         teamList.remove(teamList.stream().filter(team -> team.getColor() == TeamColor.valueOf(args[1].toUpperCase())).findFirst().get());
         Qbw.getInstance().getDatabaseQueries().setWorld(world);

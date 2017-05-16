@@ -24,6 +24,8 @@ public class HelpCommand implements IQbwCommand {
         } else {
             switch (args[0].toLowerCase()) {
                 case "worldconf":
+                    s += "§7- §e/QBW enableworld <World name> §7Enable a world \n";
+                    s += "§7- §e/QBW disableworld <World name> §7Disable a world \n";
                     s += "§7- §e/QBW addworld <World name> §7Adds a world to qbw, so it can be used as an arena \n";
                     s += "§7- §e/QBW remworld <World name> §7Removes a world from qbw \n";
                     s += "§7- §e/QBW addspawner <World name> <Type> §7Adds a spawner to a qbw map on your position \n";
@@ -44,7 +46,7 @@ public class HelpCommand implements IQbwCommand {
                     s += "§7- §e/QBW addarena <Unique name> §7Adds an arena \n";
                     s += "§7- §e/QBW remarena <Name> §7Removes an arena \n";
                     s += "§7- §e/QBW setlobbyspawn <Name> §7Sets an arena's lobby spawn point \n";
-                    s += "§7- §e/QBW setplayersperteam <Name> <Number> §7Sets the maximum player limit for teams in an arena";
+                    s += "§7- §e/QBW setplayersperteam <Name> <Number> §7Sets the maximum player limit for teams in an arena \n";
                     s += "§7- §e/QBW setteamcount <Name> <Number> §7Sets the team count";
                     break;
                 case "arena":

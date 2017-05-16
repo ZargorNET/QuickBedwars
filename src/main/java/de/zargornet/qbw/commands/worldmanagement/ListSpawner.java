@@ -32,6 +32,8 @@ public class ListSpawner implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         final String[] s = {""};
         world.getSpawnerList().stream().sorted(Comparator.comparingInt(QbwSpawner::getId)).forEach(qbwSpawner -> {
             double x = qbwSpawner.getLocation().getX();

@@ -3,6 +3,7 @@ package de.zargornet.qbw.game.arena;
 import de.zargornet.qbw.game.QbwLocation;
 import de.zargornet.qbw.game.QbwPlayer;
 import de.zargornet.qbw.game.worlds.QbwWorld;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
 /**
  * Defines a new arena
  */
+@Data
 public class QbwArena implements Cloneable {
     private final String name;
     private QbwLocation lobby;
@@ -20,6 +22,7 @@ public class QbwArena implements Cloneable {
     private int playersPerTeam;
     private int teamCount;
     private QbwWorld world;
+    private QbwWorld[] availableWorlds;
     private Map<QbwCounterType, Integer> counters = new HashMap<>();
 
     public QbwArena(String name, QbwLocation lobby, int playersPerTeam, int teamCount) {
@@ -29,67 +32,6 @@ public class QbwArena implements Cloneable {
         this.teamCount = teamCount;
         this.state = QbwArenaState.STOPPED;
     }
-
-    public synchronized void setCounters(Map<QbwCounterType, Integer> counters) {
-        this.counters = counters;
-    }
-
-    public synchronized Map<QbwCounterType, Integer> getCounters() {
-        return counters;
-    }
-
-    public synchronized String getName() {
-        return name;
-    }
-
-    public synchronized QbwLocation getLobby() {
-        return lobby;
-    }
-
-    public synchronized void setLobby(QbwLocation lobby) {
-        this.lobby = lobby;
-    }
-
-    public synchronized List<QbwPlayer> getPlayers() {
-        return players;
-    }
-
-    public synchronized void setPlayers(List<QbwPlayer> players) {
-        this.players = players;
-    }
-
-    public synchronized QbwArenaState getState() {
-        return state;
-    }
-
-    public synchronized void setState(QbwArenaState state) {
-        this.state = state;
-    }
-
-    public synchronized int getPlayersPerTeam() {
-        return playersPerTeam;
-    }
-
-    public synchronized void setPlayersPerTeam(int playersPerTeam) {
-        this.playersPerTeam = playersPerTeam;
-    }
-
-    public synchronized QbwWorld getWorld() {
-        return world;
-    }
-
-    public synchronized void setWorld(QbwWorld world) {
-        this.world = world;
-    }
-
-    public synchronized int getTeamCount() {
-        return teamCount;
-    }
-
-    public synchronized void setTeamCount(int teamCount) {
-        this.teamCount = teamCount;
-    }
-
     public QbwArena clone() throws CloneNotSupportedException {
         return (QbwArena) super.clone();
     }

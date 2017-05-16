@@ -1,6 +1,7 @@
 package de.zargornet.qbw.utils.files;
 
 import de.zargornet.qbw.Qbw;
+import lombok.Getter;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -17,7 +18,7 @@ import static java.util.Locale.setDefault;
  * Messages file
  */
 public class MessagesFile {
-    private Locale locale;
+    @Getter
     private ResourceBundle resourceBundle;
 
     public MessagesFile() {
@@ -27,7 +28,7 @@ public class MessagesFile {
         String localeCFG = Qbw.getInstance().getCfg().getConfiguration().getString("locale");
 
         setDefault(Locale.ROOT);
-        locale = new Locale(localeCFG);
+        Locale locale = new Locale(localeCFG);
 
         try {
             File file = new File(Qbw.getInstance().getDataFolder() + "/locales/");
@@ -64,9 +65,5 @@ public class MessagesFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public ResourceBundle getResourceBundle() {
-        return resourceBundle;
     }
 }

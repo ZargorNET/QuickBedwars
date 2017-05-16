@@ -32,7 +32,7 @@ public class AddWorld implements IQbwCommand {
             sender.sendMessage(Qbw.getInstance().getPrefix() + "§cWorld doesn't exist");
             return;
         }
-        QbwWorld world = new QbwWorld(args[0].toLowerCase(), new ArrayList<>(), new ArrayList<>(), false);
+        QbwWorld world = new QbwWorld(args[0].toLowerCase(), new ArrayList<>(), new ArrayList<>(), false, false);
         Qbw.getInstance().getDatabaseQueries().setWorld(world);
         sender.sendMessage(Qbw.getInstance().getPrefix() + "§aSuccess!");
     }

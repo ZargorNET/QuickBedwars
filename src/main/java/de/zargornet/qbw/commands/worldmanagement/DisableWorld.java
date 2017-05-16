@@ -9,30 +9,31 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 /**
- * Removes a world from qbw
+ * Disable a world
  */
 @QbwCommandPath(
-        path = "remworld",
-        permission = "qbw.remworld"
+        path = "disableworld",
+        permission = "qbw.disableworld"
 )
-public class RemWorld implements IQbwCommand {
+public class DisableWorld implements IQbwCommand {
     @Override
     public void onCommand(CommandSender sender, Command cmd, String[] args) {
         if (args.length != 1) {
-            sender.sendMessage(Qbw.getInstance().getPrefix() + "§cPlease use: §e/QBW remworld <World name>");
+            sender.sendMessage(Qbw.getInstance().getPrefix() + "§cPlease use: §e/QBW disableworld <Name>");
             return;
         }
         QbwWorld world = Qbw.getInstance().getDatabaseQueries().getWorld(args[0]);
-        if (!QbwCommandUtil.worldAdded(sender, world)) {
+        if (!QbwCommandUtil.worldAdded(sender, world))
             return;
-        }
-        if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
+        if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, world.getName()))
             return;
-        }
-        if (!QbwCommandUtil.worldDisabled(sender, world))
-            return;
-        Qbw.getInstance().getDatabaseQueries().remWorld(args[0]);
-        sender.sendMessage(Qbw.getInstance().getPrefix() + "§aSuccess!");
 
+        if (!world.isEnabled()) {
+            sender.sendMessage(Qbw.getInstance().getPrefix() + "§cWorld isn't enabled!");
+            return;
+        }
+        world.setEnabled(false);
+        Qbw.getInstance().getDatabaseQueries().setWorld(world);
+        sender.sendMessage(Qbw.getInstance().getPrefix() + "§aSuccess!");
     }
 }

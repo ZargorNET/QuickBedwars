@@ -1,5 +1,6 @@
 package de.zargornet.qbw.utils.packets;
 
+import lombok.Data;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class EntityHandler {
         return list;
     }
 
-
+    @Data
     public static class EntityPlayer {
         private Object entity;
         private Player player;
@@ -65,14 +66,6 @@ public class EntityHandler {
         public EntityPlayer(Object entity, Player player) {
             this.entity = entity;
             this.player = player;
-        }
-
-        public Object getEntity() {
-            return entity;
-        }
-
-        public Player getPlayer() {
-            return player;
         }
     }
 }

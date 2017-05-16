@@ -1,6 +1,7 @@
 package de.zargornet.qbw.utils.database;
 
 import de.zargornet.qbw.Qbw;
+import lombok.Getter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
  * SQLite class
  */
 public class SQLite {
+    @Getter
     private Connection con;
 
     /**
@@ -22,9 +24,5 @@ public class SQLite {
             Qbw.getInstance().getLogger().severe("A unkown error happened while connecting to the sqlite server! Do this plugin have write access to \"/plugins/QuickBedwars\"?");
             Qbw.getInstance().getPluginLoader().disablePlugin(Qbw.getInstance());
         }
-    }
-
-    public Connection getCon() {
-        return con;
     }
 }

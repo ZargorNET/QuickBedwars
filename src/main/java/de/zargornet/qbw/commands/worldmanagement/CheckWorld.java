@@ -6,6 +6,7 @@ import de.zargornet.qbw.commands.QbwCommandPath;
 import de.zargornet.qbw.commands.QbwCommandUtil;
 import de.zargornet.qbw.game.worlds.QbwTeam;
 import de.zargornet.qbw.game.worlds.QbwWorld;
+import de.zargornet.qbw.game.worlds.TeamColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -30,22 +31,26 @@ public class CheckWorld implements IQbwCommand {
             return;
 
         TeamError teamError = null;
-        for (QbwTeam team : world.getTeams()) {
-            if (team.getShopLoc() == null) {
-                teamError = new TeamError(team, TeamErrorCause.NO_SHOP);
-                break;
+        if (!world.getTeams().isEmpty()) {
+            for (QbwTeam team : world.getTeams()) {
+                if (team.getShopLoc() == null) {
+                    teamError = new TeamError(team, TeamErrorCause.NO_SHOP);
+                    break;
+                }
+                if (team.getTeamBedLoc() == null) {
+                    teamError = new TeamError(team, TeamErrorCause.NO_BED);
+                    break;
+                }
+                if (team.getTeamBedLoc() == null) {
+                    teamError = new TeamError(team, TeamErrorCause.NO_SPAWNPOINT);
+                    break;
+                }
             }
-            if (team.getTeamBedLoc() == null) {
-                teamError = new TeamError(team, TeamErrorCause.NO_BED);
-                break;
-            }
-            if (team.getTeamBedLoc() == null) {
-                teamError = new TeamError(team, TeamErrorCause.NO_SPAWNPOINT);
-                break;
-            }
+        } else {
+            teamError = new TeamError(new QbwTeam(TeamColor.UNKNOWN, null, null, null), TeamErrorCause.NO_TEAMS);
         }
 
-        String s = "§aStatus of world §e" + world.getName() + " \n";
+        String s = "§aStatus of world §e" + world.getName() + " §7(" + (world.isEnabled() ? "Enabled" : "Disabled") + ") \n";
         if (world.getSpawnerList().isEmpty())
             s += "   §7- §eSpawner configured: §c✘ \n";
         else
@@ -84,6 +89,7 @@ public class CheckWorld implements IQbwCommand {
     }
 
     private enum TeamErrorCause {
+        NO_TEAMS,
         NO_SHOP,
         NO_SPAWNPOINT,
         NO_BED

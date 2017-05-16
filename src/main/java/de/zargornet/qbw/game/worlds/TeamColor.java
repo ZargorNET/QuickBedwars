@@ -1,10 +1,13 @@
 package de.zargornet.qbw.game.worlds;
 
 
+import lombok.Getter;
+
 /**
  * TeamColor
  */
 public enum TeamColor {
+    UNKNOWN(0),
     WHITE(0),
     ORANGE(1),
     MAGENTA(2),
@@ -22,13 +25,10 @@ public enum TeamColor {
     RED(14),
     BLACK(15);
 
+    @Getter
     private int subid;
 
     TeamColor(int subid) {
         this.subid = subid;
-    }
-
-    public int getSubid() {
-        return subid;
     }
 }

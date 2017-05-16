@@ -21,7 +21,7 @@ public class ListWorlds implements IQbwCommand {
     public void onCommand(CommandSender sender, Command cmd, String[] args) {
         List<QbwWorld> list = Qbw.getInstance().getDatabaseQueries().getWorlds();
         sender.sendMessage("§aWorlds: \n");
-        list.forEach(world -> sender.sendMessage("§7- §e" + world.getName()));
+        list.forEach(world -> sender.sendMessage("§7- " + (world.isEnabled() ? "§e" : "§c") + world.getName()));
         sender.sendMessage(Qbw.getInstance().getPrefix() + "§7For more detailed output type: §e/QBW checkworld <World>");
     }
 }

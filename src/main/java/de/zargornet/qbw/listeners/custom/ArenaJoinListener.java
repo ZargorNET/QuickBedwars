@@ -12,7 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-/**
+/**#
  * Listener for {@link PlayerArenaJoinEvent}
  */
 public class ArenaJoinListener {
@@ -21,7 +21,7 @@ public class ArenaJoinListener {
         QbwArena arena = e.getArena();
         Player p = e.getPlayer();
         if (!arena.getPlayers().isEmpty() && arena.getPlayers().size() <= 1)
-            QbwArenaCountdown.startCountdown(arena, QbwCounterType.STARTING);
+            QbwArenaCountdown.startCountdown(arena, QbwCounterType.MAPVOTE);
         QbwArenaUtil.broadcastToArena(arena, "§a+ §3" + p.getName());
         p.getInventory().clear();
 

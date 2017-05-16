@@ -50,6 +50,8 @@ public class SetTeamBed implements IQbwCommand {
             sender.sendMessage(Qbw.getInstance().getPrefix() + "§cBlock where you're looking at isn't a bed");
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         QbwTeam team = world.getTeams().stream().filter(team1 -> team1.getColor() == TeamColor.valueOf(args[1].toUpperCase())).findFirst().get();
         team.setTeamBedLoc(new QbwLocation(p.getTargetBlock((Set<Material>) null, 5).getLocation()));
         Qbw.getInstance().getDatabaseQueries().setWorld(world);

@@ -44,6 +44,8 @@ public class SetTeamShop implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         List<QbwTeam> teamList = world.getTeams();
         QbwTeam team = teamList.stream().filter(team1 -> team1.getColor() == TeamColor.valueOf(args[1].toUpperCase())).findFirst().get();
         team.setShopLoc(new QbwLocation(((Player) sender).getLocation()));

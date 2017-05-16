@@ -14,6 +14,7 @@ import de.zargornet.qbw.utils.packets.INMSUtil;
 import de.zargornet.qbw.utils.packets.IPacketReader;
 import de.zargornet.qbw.utils.packets.versions.v1_11_R1.NMSUtil;
 import de.zargornet.qbw.utils.packets.versions.v1_11_R1.PacketReader;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,22 +28,23 @@ import java.util.logging.Level;
  * Main class
  */
 public class Qbw extends JavaPlugin {
+    @Getter
     private static Qbw instance;
-
+    @Getter
     private INMSUtil nmsUtil;
-
+    @Getter
     private IPacketReader packetReader;
-
+    @Getter
     private Config cfg;
-
+    @Getter
     private MessagesFile messagesFile;
-
+    @Getter
     private CustomEventHandler customEventHandler;
-
+    @Getter
     private IDatabaseQueries databaseQueries;
-
+    @Getter
     private final String prefix = "§7[§aQBW§7] §r";
-
+    @Getter
     private List<QbwArena> arenas = new ArrayList<>();
 
 
@@ -148,41 +150,5 @@ public class Qbw extends JavaPlugin {
             return;
         }
         this.getLogger().info("You disabled metrics :c Please enable it again :)!");
-    }
-
-    public static Qbw getInstance() {
-        return instance;
-    }
-
-    public INMSUtil getNmsUtil() {
-        return nmsUtil;
-    }
-
-    public IPacketReader getPacketReader() {
-        return packetReader;
-    }
-
-    public Config getCfg() {
-        return cfg;
-    }
-
-    public MessagesFile getMessagesFile() {
-        return messagesFile;
-    }
-
-    public CustomEventHandler getCustomEventHandler() {
-        return customEventHandler;
-    }
-
-    public IDatabaseQueries getDatabaseQueries() {
-        return databaseQueries;
-    }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public List<QbwArena> getArenas() {
-        return arenas;
     }
 }

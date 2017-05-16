@@ -14,7 +14,7 @@ import java.io.IOException;
  * Managing loading and copying {@linkplain de.zargornet.qbw.game.worlds.QbwWorld}
  */
 public class WorldLoader {
-    private QbwWorld world;
+    private final QbwWorld world;
     private World bukkitWorld;
     private final String NAME;
 

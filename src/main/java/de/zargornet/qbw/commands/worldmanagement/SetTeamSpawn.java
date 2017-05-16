@@ -44,6 +44,8 @@ public class SetTeamSpawn implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         List<QbwTeam> teamList = world.getTeams();
         QbwTeam team = teamList.stream().filter(teamL -> teamL.getColor() == TeamColor.valueOf(args[1].toUpperCase())).findFirst().get();
         team.setSpawnLoc(new QbwLocation(((Player) sender).getLocation()));

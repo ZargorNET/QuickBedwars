@@ -1,6 +1,7 @@
 package de.zargornet.qbw.utils;
 
 import de.zargornet.qbw.Qbw;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 
 /**
@@ -8,6 +9,7 @@ import org.bukkit.Bukkit;
  */
 public abstract class Countdown {
     private long timeleft;
+    @Getter
     private int ID = 0;
 
     /***
@@ -56,8 +58,4 @@ public abstract class Countdown {
      * Called when the timer finished
      */
     public abstract void onFinish();
-
-    public int getID() {
-        return ID;
-    }
 }

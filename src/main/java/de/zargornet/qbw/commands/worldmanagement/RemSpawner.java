@@ -45,6 +45,8 @@ public class RemSpawner implements IQbwCommand {
             sender.sendMessage(Qbw.getInstance().getPrefix() + "§cSpawner[§e#" + Integer.valueOf(args[1]) + "§c] wasn't found");
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         qbwSpawnerList.remove(qbwSpawnerList.stream().filter(qbwSpawner -> qbwSpawner.getId() == Integer.valueOf(args[1])).findFirst().get());
         Qbw.getInstance().getDatabaseQueries().setWorld(world);
         sender.sendMessage(Qbw.getInstance().getPrefix() + "§aSpawner §e#" + Integer.valueOf(args[1]) + " §adeleted!");

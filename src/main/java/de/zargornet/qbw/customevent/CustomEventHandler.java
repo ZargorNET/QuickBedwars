@@ -2,6 +2,7 @@ package de.zargornet.qbw.customevent;
 
 import com.google.common.reflect.ClassPath;
 import de.zargornet.qbw.Qbw;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -14,6 +15,7 @@ import java.util.List;
  * Handles custom events
  */
 public class CustomEventHandler {
+    @Getter
     private List<Method> classMethods = new ArrayList<>();
 
     /**
@@ -54,9 +56,5 @@ public class CustomEventHandler {
                 }
             }
         });
-    }
-
-    public List<Method> getClassMethods() {
-        return classMethods;
     }
 }

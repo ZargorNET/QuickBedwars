@@ -16,7 +16,12 @@ public enum Messages {
     COMMAND_NOT_FOUND,
     NO_PERMISSIONS,
     NOT_IN_A_ARENA,
-    ARENA_INVALID_STATE;
+    ARENA_INVALID_STATE,
+    INV_CLOSE_ITEM,
+    NO_MAPS_FOUND,
+    NO_MAPVOTE,
+    WAIT_UNTIL_MAP_VOTE_FINSIHED,
+    UNKNOWN_ERROR;
 
 
     private String text;

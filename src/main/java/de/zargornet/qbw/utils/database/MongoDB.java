@@ -6,6 +6,7 @@ import com.mongodb.MongoException;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
 import de.zargornet.qbw.Qbw;
+import lombok.Data;
 import org.bson.Document;
 
 import java.util.Collections;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 /**
  * Database: MongoDB
  */
+@Data
 public class MongoDB {
     private MongoClient client;
     private MongoDatabase db;
@@ -47,13 +49,5 @@ public class MongoDB {
             Qbw.getInstance().getLogger().severe("A unknown error happened while enabling mongodb! Is the password correct? Is the server online?");
             Qbw.getInstance().getPluginLoader().disablePlugin(Qbw.getInstance());
         }
-    }
-
-    public MongoClient getClient() {
-        return client;
-    }
-
-    public MongoDatabase getDb() {
-        return db;
     }
 }

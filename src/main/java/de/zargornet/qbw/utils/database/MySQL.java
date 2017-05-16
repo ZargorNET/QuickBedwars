@@ -1,6 +1,7 @@
 package de.zargornet.qbw.utils.database;
 
 import de.zargornet.qbw.Qbw;
+import lombok.Getter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
  * MySQL class
  */
 public class MySQL {
+    @Getter
     private Connection con;
 
     /***
@@ -29,8 +31,5 @@ public class MySQL {
         }
     }
 
-    public Connection getCon() {
-        return con;
-    }
 
 }

@@ -44,6 +44,8 @@ public class AddSpawner implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         List<QbwSpawner> spawnerList = world.getSpawnerList();
         int id = spawnerList.size() + 1;
         QbwLocation qbwLocation = new QbwLocation(((Player) sender).getLocation());

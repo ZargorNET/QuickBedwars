@@ -34,10 +34,16 @@ public class AddTeam implements IQbwCommand {
         if (!QbwCommandUtil.checkIfWorldIsNotUsed(sender, args[0])) {
             return;
         }
+        if (TeamColor.valueOf(args[1].toUpperCase()) == TeamColor.UNKNOWN) {
+            sender.sendMessage(Qbw.getInstance().getPrefix() + "§cYou cant add a team named 'Unknown'");
+            return;
+        }
         if (world.getTeams().stream().anyMatch(qbwTeam -> qbwTeam.getColor() == TeamColor.valueOf(args[1].toUpperCase()))) {
             sender.sendMessage(Qbw.getInstance().getPrefix() + "§cTeam already added!");
             return;
         }
+        if (!QbwCommandUtil.worldDisabled(sender, world))
+            return;
         QbwTeam team = new QbwTeam(TeamColor.valueOf(args[1].toUpperCase()), null, null, null);
         world.getTeams().add(team);
         Qbw.getInstance().getDatabaseQueries().setWorld(world);

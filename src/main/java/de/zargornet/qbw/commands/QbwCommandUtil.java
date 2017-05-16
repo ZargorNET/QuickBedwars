@@ -114,6 +114,22 @@ public class QbwCommandUtil {
     }
 
     /**
+     * Checks if world is disabled
+     *
+     * @param sender CommandSender
+     * @param world  QbwWorld
+     * @return True when disabled
+     */
+    public static boolean worldDisabled(CommandSender sender, QbwWorld world) {
+        if (world.isEnabled()) {
+            sender.sendMessage(Qbw.getInstance().getPrefix() + "§cWorld isn't disabled!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Checks if a {@link CommandSender} is a player
      *
      * @param sender CommandSender
